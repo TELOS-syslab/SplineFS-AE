@@ -1,0 +1,72 @@
+claim,scope,key,baseline,low,high,tolerance,figure,description,source
+F9a,claim,,ext4,19.7,,0.3,Fig. 9a,directory metadata vs ext4,paper
+F10,claim,,ext4,1.57,3.65,,Fig. 10,cold tree scan vs ext4,paper
+F9b,claim,,ext4,3.0,4.2,,Fig. 9b,"positive lookups vs ext4, 512MB-2GB",paper
+F9c,claim,,ext4,3.2,,0.25,Fig. 9c,negative lookups vs ext4 at 2GB,paper
+F12a1,claim,,ext4,1.0,,0.1,Fig. 12a,no promotion tracks ext4,paper
+F12a2,claim,,ext4,1.3,1.4,,Fig. 12a,per-directory promotion,paper
+F12a3,claim,,ext4,1.8,,0.2,Fig. 12a,subtree sharing,paper
+F12bc,claim,,ext4,0.69,,0.15,Fig. 12b,cycles vs ext4,paper
+F12bi,claim,,ext4,0.54,,0.15,Fig. 12b,instructions vs ext4,paper
+F11,claim,,ext4,1.12,2.1,,Fig. 11,cold application stages vs ext4,paper
+F13,claim,,ext4,,,,Fig. 13,mdtest per-operation ratios,paper
+F14,claim,,ext4,,,,Fig. 14,coverage follows the quiet fraction,paper
+F14par,claim,,ext4,1.007,,0.02,Fig. 14,parity at 100% churn,paper
+F10,row,kernel_du,ext4,1.57,,,Fig. 10,,figure data
+F10,row,kernel_du,xfs,2.62,,,Fig. 10,,figure data
+F10,row,kernel_du,btrfs,2.52,,,Fig. 10,,figure data
+F10,row,kernel_du,f2fs,14.05,,,Fig. 10,,figure data
+F10,row,imagenet_md,ext4,1.64,,,Fig. 10,,figure data
+F10,row,imagenet_md,xfs,2.31,,,Fig. 10,,figure data
+F10,row,imagenet_md,btrfs,2.57,,,Fig. 10,,figure data
+F10,row,imagenet_md,f2fs,22.78,,,Fig. 10,,figure data
+F10,row,yellusers,ext4,3.65,,,Fig. 10,,figure data
+F10,row,yellusers,xfs,1.99,,,Fig. 10,,figure data
+F10,row,yellusers,btrfs,2.19,,,Fig. 10,,figure data
+F10,row,yellusers,f2fs,3.63,,,Fig. 10,,figure data
+F10,row,yellprojs,ext4,3.03,,,Fig. 10,,figure data
+F10,row,yellprojs,xfs,1.71,,,Fig. 10,,figure data
+F10,row,yellprojs,btrfs,1.81,,,Fig. 10,,figure data
+F10,row,yellprojs,f2fs,2.69,,,Fig. 10,,figure data
+F10,row,anony,ext4,2.02,,,Fig. 10,,figure data
+F10,row,anony,xfs,1.14,,,Fig. 10,,figure data
+F10,row,anony,btrfs,1.14,,,Fig. 10,,figure data
+F10,row,anony,f2fs,1.76,,,Fig. 10,,figure data
+F10,row,scr4,ext4,1.95,,,Fig. 10,,figure data
+F10,row,scr4,xfs,1.1,,,Fig. 10,,figure data
+F10,row,scr4,btrfs,1.0,,,Fig. 10,,figure data
+F10,row,scr4,f2fs,1.78,,,Fig. 10,,figure data
+F10,row,ttscratch,ext4,2.02,,,Fig. 10,,figure data
+F10,row,ttscratch,xfs,1.19,,,Fig. 10,,figure data
+F10,row,ttscratch,btrfs,1.21,,,Fig. 10,,figure data
+F10,row,ttscratch,f2fs,1.79,,,Fig. 10,,figure data
+F10,row,yellusers_full,ext4,2.03,,,Fig. 10,,figure data
+F10,row,yellusers_full,xfs,1.6,,,Fig. 10,,figure data
+F10,row,yellusers_full,btrfs,1.39,,,Fig. 10,,figure data
+F11,app,container,ext4,1.73,,,Fig. 11,,figure data
+F11,app,container,xfs,1.6,,,Fig. 11,,figure data
+F11,app,container,btrfs,1.35,,,Fig. 11,,figure data
+F11,app,container,f2fs,1.25,,,Fig. 11,,figure data
+F11,app,dataloader,ext4,1.12,,,Fig. 11,,figure data
+F11,app,dataloader,xfs,2.13,,,Fig. 11,,figure data
+F11,app,dataloader,btrfs,1.81,,,Fig. 11,,figure data
+F11,app,dataloader,f2fs,1.48,,,Fig. 11,,figure data
+F11,app,tar,ext4,2.1,,,Fig. 11,,figure data
+F11,app,tar,xfs,3.04,,,Fig. 11,,figure data
+F11,app,tar,btrfs,2.54,,,Fig. 11,,figure data
+F11,app,tar,f2fs,2.76,,,Fig. 11,,figure data
+F11,app,sqlite,ext4,1.31,,,Fig. 11,,figure data
+F11,app,sqlite,xfs,1.45,,,Fig. 11,,figure data
+F11,app,sqlite,btrfs,1.55,,,Fig. 11,,figure data
+F11,app,sqlite,f2fs,1.78,,,Fig. 11,,figure data
+F11,app,duckdb,ext4,1.14,,,Fig. 11,,figure data
+F11,app,duckdb,xfs,1.08,,,Fig. 11,,figure data
+F11,app,duckdb,btrfs,1.62,,,Fig. 11,,figure data
+F11,app,duckdb,f2fs,1.53,,,Fig. 11,,figure data
+F11,app,llamaindex,ext4,1.21,,,Fig. 11,,figure data
+F11,app,llamaindex,xfs,1.18,,,Fig. 11,,figure data
+F11,app,llamaindex,btrfs,0.83,,,Fig. 11,,figure data
+F11,app,llamaindex,f2fs,1.22,,,Fig. 11,,figure data
+F12a,arm,mutable,ext4,0.959,1.044,,Fig. 12a,,figure data
+F12a,arm,promote,ext4,1.344,1.415,,Fig. 12a,,figure data
+F12a,arm,subtree,ext4,1.538,1.83,,Fig. 12a,,figure data

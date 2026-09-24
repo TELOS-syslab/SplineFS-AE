@@ -1,0 +1,47 @@
+# Kernel module build products.
+**/*.ko
+**/*.o
+**/*.mod
+**/*.mod.c
+**/*.d
+**/.*.cmd
+**/modules.order
+**/Module.symvers
+**/.tmp_versions/
+
+# Userspace tools and test binaries.
+utils/bin/
+utils/tests/clear_lidir_feature
+utils/tests/cross_root_file_race
+utils/tests/format_test
+utils/tests/namespace_stress
+utils/tests/policy_calibrate
+utils/tests/radix_spline_test
+utils/tests/readdir_cookie
+utils/tests/inode_pool_test
+utils/tests/rename_race
+utils/tests/rename_capacity
+utils/tests/stable_fault
+utils/tests/transition_probe
+utils/evaluation/locality_sweep/locality_sweep_bench
+utils/evaluation/locality_sweep/locality_sweep_summary.md
+__pycache__/
+*.pyc
+
+# Kernel trees (scripts/internal/fetch_kernel.sh) and the VM (scripts/vm/).
+deploy/kernel/
+deploy/vm/
+**/linux-[0-9]*/
+**/linux-[0-9]*.tar.*
+
+# Run outputs.
+results/*
+!results/.gitkeep
+**/*.perf
+**/perf.data
+**/perf.data.*
+
+# Datasets (datasets/MANIFEST.md) and saved host CPU state.
+datasets/staged/
+datasets/build/
+scripts/internal/splinefs-ae-host_state

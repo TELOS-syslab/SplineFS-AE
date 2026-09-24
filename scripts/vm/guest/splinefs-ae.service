@@ -1,0 +1,14 @@
+[Unit]
+Description=SplineFS artifact evaluation
+After=local-fs.target network.target
+ConditionKernelCommandLine=splinefs.run=1
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/splinefs-ae-run
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target

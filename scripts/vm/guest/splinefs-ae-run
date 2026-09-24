@@ -1,0 +1,44 @@
+#!/bin/bash
+# splinefs-ae-run -- the VM's boot service: runs the queue on /dev/vdb with
+# the settings from the kernel command line (scripts/vm/run.sh), then powers
+# off.  The artifact, results/ and datasets/staged come in over 9p.
+set -uo pipefail
+arg() { tr ' ' '\n' < /proc/cmdline | sed -n "s/^splinefs\.$1=//p"; }
+share() { mkdir -p "$2"; mount -t 9p -o "trans=virtio,version=9p2000.L,msize=1048576${3:+,$3}" "$1" "$2"; }
+tags=$(cat /sys/bus/virtio/drivers/9pnet_virtio/*/mount_tag 2>/dev/null | tr '\0' '\n')
+
+run() {
+    share hostae /host ro || return 1
+    rsync -a --delete --exclude=/.git --exclude=/results --exclude=/deploy \
+        --exclude=/datasets/staged --exclude=/utils/bin \
+        --exclude=/utils/evaluation/locality_sweep/locality_sweep_bench \
+        --exclude='*.o' --exclude='*.ko' --exclude='*.mod' --exclude='*.mod.c' \
+        --exclude='.*.cmd' /host/ /ae/ || return 1
+    mkdir -p /ae/results /ae/src/ext5 /ae/src/jbd3
+    cp /host/deploy/vm/module/ext5/ext5.ko /ae/src/ext5/ || return 1
+    cp /host/deploy/vm/module/jbd3/jbd3.ko /ae/src/jbd3/ || return 1
+    share results /ae/results || return 1
+    if echo "$tags" | grep -qx datasets; then
+        share datasets /ae/datasets/staged ro || return 1
+    fi
+    make -s -C /ae/utils >/dev/null || return 1
+    make -s -C /ae/utils/evaluation/locality_sweep locality_sweep_bench >/dev/null || return 1
+
+    local campaigns
+    campaigns=$(arg campaigns | tr ',' ' ')
+    env DEV=/dev/vdb CONFIRM_DESTROY=/dev/vdb AE_PLATFORM=qemu \
+        MAX_CAP="$(arg max_cap)" \
+        bash /ae/scripts/run_queue.sh --tier "$(arg tier)" \
+        ${REPS:+--reps "$REPS"} $campaigns
+}
+
+if [ -z "$(swapon --show=NAME --noheadings)" ]; then
+    fallocate -l 2G /swapfile && chmod 600 /swapfile &&
+        mkswap /swapfile >/dev/null && swapon /swapfile
+fi
+
+REPS=$(arg reps)
+run
+echo "SPLINEFS-VM-DONE rc=$?"
+sync
+systemctl poweroff
